@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\RazorpayController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -50,7 +51,9 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/events', [HomeController::class, 'events'])->name('front.events');
     Route::get('/contact', [HomeController::class, 'contact'])->name('front.contact');
     Route::get('/e-brochure', [HomeController::class, 'eBrochure'])->name('front.e-brochure');
-    Route::get('/checkout/{id}', [StripeController::class, 'checkout'])->name('front.checkout');
+    // Route::get('/checkout/{id}', [StripeController::class, 'checkout'])->name('front.checkout');
+    Route::get('/checkout/{id}', [RazorpayController::class, 'index'])->name('front.checkout');
+    Route::get('/payment', [RazorpayController::class, 'store'])->name('front.payment');
 
 
 
