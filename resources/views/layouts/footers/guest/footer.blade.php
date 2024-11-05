@@ -61,13 +61,13 @@
           <div class="footer-col-content-wrapper">
             <ul class="footer-menu">
               <li class="footer-menu-item"><i class="fas fa-arrow-right icon "></i><a class="footer-menu-link"
-                  href="products.php">products</a>
+                  href="{{ route('front.products') }}">products</a>
               </li>
               <li class="footer-menu-item"><i class="fas fa-arrow-right icon "></i><a class="footer-menu-link"
-                  href="contact-us.php">contact</a>
+                  href="{{ route('front.contact') }}">contact</a>
               </li>
               <li class="footer-menu-item"><i class="fas fa-arrow-right icon "></i><a class="footer-menu-link"
-                  href="about-us.php">about us</a>
+                  href="{{ route('front.about') }}">about us</a>
               </li>
               <!--<li class="footer-menu-item"><i class="fas fa-arrow-right icon "></i><a class="footer-menu-link"-->
               <!--    href="#0">projects</a>-->
