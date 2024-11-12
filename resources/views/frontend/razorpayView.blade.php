@@ -89,12 +89,12 @@
                            <form action="{{ route('front.payment') }}" method="POST">
                               @csrf
                               <script src="https://checkout.razorpay.com/v1/checkout.js"
-                                 data-key="rzp_test_RDSdt5JqgmuM39"
+                                 data-key="rzp_live_04uh4tjkisMSKy"
                                  data-amount="{{ $product->price * 100 }}" 
                                  data-currency="INR"
                                  data-buttontext="Proceed to Pay ₹{{ $product->price }}"
                                  data-name="Rajbala SHG"
-                                 data-description="Paying for {{ $product->name }}"
+                                 data-description="Paying for {{ $product->name }}, Product Id: {{ $product->id }}"
                                  data-image="https://cybercollege.info/wp-content/uploads/2021/06/cropped-logo.png"
                                  data-prefill.name="name"
                                  data-prefill.email="email"
