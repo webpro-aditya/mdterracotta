@@ -73,7 +73,7 @@
     <!-- Our Story Section -->
     <section id="story-content">
         <div class="bg-white rounded-2xl shadow-2xl p-8 mb-12">
-            <h1 class="text-5xl font-extrabold text-center text-stone-900 mb-10 leading-tight">The Journey of Maa Dharitri Crafts</h1>
+            <h1 class="text-4xl font-extrabold text-center text-stone-900 mb-10 leading-tight">The Journey of Maa Dharitri Crafts</h1>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
                 <div>

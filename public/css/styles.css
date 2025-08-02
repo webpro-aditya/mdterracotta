@@ -11616,6 +11616,9 @@ span.user-mode button {
   .login-section {
       padding: 25px;
   }
+  .my_header > nav {
+    flex-direction: row !important;
+  }
 }
 
 @media only screen and (max-width:575px) {

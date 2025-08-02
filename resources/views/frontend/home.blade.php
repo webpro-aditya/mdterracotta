@@ -170,7 +170,7 @@
   <!-- Homepage Section -->
   <section id="home-content">
     <div class="bg-white rounded-2xl shadow-2xl p-8 mb-12">
-      <h1 class="text-6xl font-extrabold text-center text-stone-900 mb-10 leading-tight">Crafting Heritage, Empowering Futures</h1>
+      <h1 class="text-4xl font-extrabold text-center text-stone-900 mb-10 leading-tight">Crafting Heritage, Empowering Futures</h1>
 
      <!-- Slider Section -->
       <div class="slider-container w-full mx-auto mb-16">

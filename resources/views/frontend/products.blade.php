@@ -125,7 +125,7 @@
     <!-- Products Section -->
     <section id="products-content">
         <div class="bg-white rounded-2xl shadow-2xl p-8 mb-12">
-            <h1 class="text-5xl font-extrabold text-center text-stone-900 mb-10 leading-tight">Our Exquisite Terracotta Collections</h1>
+            <h1 class="text-4xl font-extrabold text-center text-stone-900 mb-10 leading-tight">Our Exquisite Terracotta Collections</h1>
 
             <p class="text-xl text-gray-700 leading-loose text-center mb-12 max-w-3xl mx-auto">
                 Explore our diverse range of handcrafted terracotta products, meticulously created by our skilled artisans. Each piece is a testament to traditional art and sustainable craftsmanship.

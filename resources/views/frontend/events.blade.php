@@ -60,7 +60,7 @@
   <!-- Events Section -->
   <section id="events-content">
     <div class="bg-white rounded-2xl shadow-2xl p-8 mb-12">
-      <h1 class="text-5xl font-extrabold text-center text-stone-900 mb-10 leading-tight">Our Events & Photo Gallery</h1>
+      <h1 class="text-4xl font-extrabold text-center text-stone-900 mb-10 leading-tight">Our Events & Photo Gallery</h1>
 
       <p class="text-xl text-gray-700 leading-loose text-center mb-12 max-w-3xl mx-auto">
         Stay updated with our latest workshops, exhibitions, and community outreach programs. Explore moments that capture the essence of our work and the beauty of terracotta art.
