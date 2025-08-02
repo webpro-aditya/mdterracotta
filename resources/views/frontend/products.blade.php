@@ -1,67 +1,204 @@
 @extends('layouts.user_type.guest')
 
 @section('page_title', __('Products'))
-
-@section('content')
+@section('front-header')
 <style>
-    .checkout_btn {
-        background: #635BFF !important;
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f0f0f0;
+        /* Lighter, more neutral background */
+        color: #333;
     }
-    .card__price {
-        display: flex;
-        justify-content: center;
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        /* padding: 1.5rem; */
+        /* Increased padding for more breathing room */
+    }
+
+    /* Product card hover effect */
+    .product-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        /* More pronounced lift */
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        /* Stronger shadow on hover */
+    }
+
+    /* Button styles for a more professional look */
+    .btn-primary {
+        background-color: #0D9488;
+        /* Teal-700 */
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        /* Slightly less rounded */
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0F766E;
+        /* Teal-800 */
+        transform: translateY(-2px);
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1.5rem;
+        border-radius: 9999px;
+        /* rounded-full */
+        font-weight: 500;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        white-space: nowrap;
+        /* Prevent wrapping */
+    }
+
+    .filter-btn.active-filter {
+        background-color: #0D9488;
+        /* Teal-700 */
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-btn:not(.active-filter) {
+        background-color: #E0F2F7;
+        /* Light Teal */
+        color: #0D9488;
+    }
+
+    .filter-btn:not(.active-filter):hover {
+        background-color: #B2EBF2;
+        /* Lighter Teal on hover */
+    }
+
+    /* Custom styles for mobile menu toggle */
+    .mobile-menu-button {
+        display: none;
+        /* Hidden by default */
+        cursor: pointer;
+        font-size: 2rem;
+        color: white;
+    }
+
+    .pagination_wrapper {
+        min-width: 400px;
+    }
+
+    .add_cart {
+        cursor: pointer;
+    }
+
+    /* Show button on small screens */
+    @media (max-width: 767px) {
+
+        /* Tailwind's 'md' breakpoint is 768px */
+        .mobile-menu-button {
+            display: block;
+        }
+
+        .nav-menu.active {
+            display: flex;
+            /* Show menu when active */
+            flex-direction: column;
+            /* Stack items vertically */
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .nav-menu li {
+            margin: 0.5rem 0;
+        }
+
+        .pagination_wrapper {
+            min-width: 80%;
+        }
     }
 </style>
-<!-- Start inner Page hero-->
-<section class="d-flex align-items-center page-hero hero-vegas-slider inner-page-hero " id="page-hero">
-    <div class="overlay-color"></div>
-    <div class="vegas-slider-content" data-vegas-slide-1="{{ asset('front/assets/Images/hero/vegas-slider/1.jpg') }}" data-vegas-slide-2="{{ asset('front/assets/Images/hero/vegas-slider/2.jpg') }}" data-vegas-slide-3="{{ asset('front/assets/Images/hero/vegas-slider/3.jpg') }}">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 hero-text-area ">
-                    <h1 class="hero-title  wow fadeInUp" data-wow-delay=".2s">Products</h1>
-                    <nav aria-label="breadcrumb ">
-                        <ul class="breadcrumb wow fadeInUp" data-wow-delay=".6s">
-                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="index.php"><i class="fas fa-home icon "></i>home</a></li>
-                            <li class="breadcrumb-item active">Products</li>
-                        </ul>
-                    </nav>
+@endsection
+@section('content')
+<main class="container py-12">
+    <!-- Products Section -->
+    <section id="products-content">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 mb-12">
+            <h1 class="text-5xl font-extrabold text-center text-stone-900 mb-10 leading-tight">Our Exquisite Terracotta Collections</h1>
+
+            <p class="text-xl text-gray-700 leading-loose text-center mb-12 max-w-3xl mx-auto">
+                Explore our diverse range of handcrafted terracotta products, meticulously created by our skilled artisans. Each piece is a testament to traditional art and sustainable craftsmanship.
+            </p>
+
+            <!-- Product Filters -->
+            <!-- <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active-filter" data-category="all">All Products</button>
+                <button class="filter-btn" data-category="vases">Vases & Pots</button>
+                <button class="filter-btn" data-category="sculptures">Sculptures & Figurines</button>
+                <button class="filter-btn" data-category="decor">Home Decor</button>
+                <button class="filter-btn" data-category="utility">Utility Items</button>
+                <button class="filter-btn" data-category="gifts">Gifts & Souvenirs</button>
+            </div> -->
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="product-grid">
+                @forelse($products as $product)
+                <!-- Example Product 1 (Vases) -->
+                <div class="bg-stone-50 rounded-xl shadow-lg overflow-hidden product-card" data-category="vases">
+                    <img src="{{ asset('assets/images/products/'. $product->image) }}" alt="Terracotta Vase" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-stone-800 mb-2">{{ $product->name }}</h3>
+                        <!-- <p class="text-gray-600 text-base">A classic terracotta vase, perfect for flowers or as a standalone art piece.</p> -->
+                        <div class="mt-5 flex justify-between items-center">
+                            <span class="text-xl font-bold text-teal-900">₹{{ $product->price }}</span>
+                            <a href="{{ route('front.checkout', [encrypt($product->id)]) }}" class="btn-primary add_cart">Add to Cart</a>
+                        </div>
+                    </div>
                 </div>
+                @empty
+                <div class="grid grid-cols-1 sm:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-8">
+                    No Products found.
+                </div>
+                @endforelse
+                {{-- Add the pagination links here --}}
+                @if ($products->count() > 0)
+                <div class="pagination_wrapper">
+                    {{ $products->onEachSide(config('constants.pagination_links_each_side'))->withQueryString()->links() }}
+                </div>
+                @endif
             </div>
         </div>
-    </div>
-</section>
-<!-- End inner Page hero-->
-<div class="container-t">
-    <h3>
-        Our Products
-    </h3>
-    <ul class="grid">
-        @forelse ($products as $product)
-        <li class="card">
-            <a class="card__link" href="#"><img class="card__image" src="{{ asset('front/'. $product->image) }}" />
-                <div class="card__text">
-                    {{ $product->name }}
-                </div>
-                <div class="card__price">
-                    <a href="{{ route('front.checkout', [encrypt($product->id)]) }}" class="btn text-light checkout_btn">
-                        <div class="price">Rs {{ $product->price }}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"></path>
-                            </svg>
-                        </div>
-                    </a>
-                </div>
-            </a>
-        </li>
-        @empty
-        <span>No products found</span>
-        @endforelse
-    </ul>
-</div>
+    </section>
 
+</main>
 @endsection
 
 @section('front-footer')
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productGrid = document.getElementById('product-grid');
+        const productCards = productGrid.querySelectorAll('.product-card');
 
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active-filter');
+                });
+                button.classList.add('active-filter');
+
+                const category = button.dataset.category;
+
+                productCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
 @endsection

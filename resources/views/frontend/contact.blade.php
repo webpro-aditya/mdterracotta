@@ -1,122 +1,188 @@
 @extends('layouts.user_type.guest')
 
 @section('page_title', __('Contact'))
+@section('front-header')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<style>
+  /* Button styles for a more professional look */
+  .btn-primary {
+    background-color: #0D9488;
+    /* Teal-700 */
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    /* Slightly less rounded */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
 
+  .btn-primary:hover {
+    background-color: #0F766E;
+    /* Teal-800 */
+    transform: translateY(-2px);
+  }
+
+  /* Custom styles for mobile menu toggle */
+  .mobile-menu-button {
+    display: none;
+    /* Hidden by default */
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+  }
+
+  /* Show button on small screens */
+  @media (max-width: 767px) {
+
+    /* Tailwind's 'md' breakpoint is 768px */
+    .mobile-menu-button {
+      display: block;
+    }
+
+    .nav-menu.active {
+      display: flex;
+      /* Show menu when active */
+      flex-direction: column;
+      /* Stack items vertically */
+      width: 100%;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .nav-menu li {
+      margin: 0.5rem 0;
+    }
+  }
+</style>
+@endsection
 @section('content')
-<!-- Start inner Page hero-->
-<section class="d-flex align-items-center page-hero hero-vegas-slider inner-page-hero " id="page-hero">
-  <div class="overlay-color"></div>
-  <div class="vegas-slider-content" data-vegas-slide-1="{{ asset('front/assets/images/hero/vegas-slider/1.jpg') }}" data-vegas-slide-2="{{ asset('front/assets/images/hero/vegas-slider/2.jpg') }}" data-vegas-slide-3="{{ asset('front/assets/Images/hero/vegas-slider/3.jpg') }}">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 hero-text-area ">
-          <h1 class="hero-title  wow fadeInUp" data-wow-delay=".2s">Contact Us</h1>
-          <nav aria-label="breadcrumb ">
-            <ul class="breadcrumb wow fadeInUp" data-wow-delay=".6s">
-              <li class="breadcrumb-item"><a class="breadcrumb-link" href="#0"><i class="fas fa-home icon "></i>home</a></li>
-              <li class="breadcrumb-item active">contact us</li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End inner Page hero-->
-<!-- Start contact-us -->
-<section class="contact-us  mega-section  pb-0" id="contact-us">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-5  mx-auto  mb-5 mb-lg-0 wow fadeInUp  " data-wow-delay="0.4s">
-        <div class=" contact-info-panel">
-          <div class="overlay-photo-image-bg "></div>
-          <div class="overlay-color"></div>
-          <div class="info-section ">
-            <div class="info-panel"><i class="fas fa-map-marker-alt icon"></i>
-              <div class="info-content">
-                <h6 class="info-title">our locations</h6>
-                <p class="info-text">
-                  J.J. COLONY, MADANGIR, NEW DELHI – 110062, INDIA
-                </p>
-              </div>
-            </div>
-            <div class="info-panel"><i class="fas fa-mobile-alt icon"></i>
-              <div class="info-content">
-                <h6 class="info-title">phone numbers</h6>
-                <p class="info-text"> <a class="tel link" href="tel:0123456789">(+91) 9711023091, 9811992120</a></p>
-              </div>
-            </div>
-            <div class="info-panel"><i class="fas fa-envelope icon"></i>
-              <div class="info-content">
-                <h6 class="info-title">Emails</h6>
-                <p class="info-text"> <a class="tel link" href="mailto:rajbalashg1@gmail.com">rajbalashg1@gmail.com</a></p>
-              </div>
-            </div>
-            <div class="info-panel"><i class="fas fa-globe-africa icon"></i>
-              <div class="info-content">
-                <h6 class="info-title">website</h6>
-                <p class="info-text"> <a class="site link" href="https://rajbalaselfhelpgroup.org"> https://rajbalaselfhelpgroup.org</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-7  mx-auto wow fadeInUp  " data-wow-delay="0.2s">
-        <div class="contact-form-panel">
-          <div class="section-heading side-heading  light-title">
-            <h2 class="section-title wow fadeInUp" data-wow-delay=".2s">Keep in touch <span class="title-design-element "></span></h2>
-            <p class="section-subtitle wow fadeInUp" data-wow-delay=".6s">We Will answer your questions as soon as possible</p>
-          </div>
-          <div class="contact-form-area input-boxed">
-            <!--Form To have user messages-->
-            <form class="main-form" id="contact-us-form" action="https://flexcode.xyz/consulto/php/send-mail.php" method="post"><span class="done-msg"></span>
-              <div class="row ">
-                <div class="col-12 col-lg-6">
-                  <div class="   input-wrapper">
-                    <input class="text-input" id="user-name" name="UserName" type="text" />
-                    <label for="user-name"> Name <span class="req">*</span></label><span class="b-border"></span><span class="error-msg"></span>
-                  </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                  <div class="   input-wrapper">
-                    <input class="text-input" id="user-email" name="UserEmail" type="email" />
-                    <label for="user-email"> E-mail <span class="req">*</span></label><span class="b-border"></span><span class="error-msg"></span>
-                  </div>
-                </div>
-                <div class="col-12 ">
-                  <div class="   input-wrapper">
-                    <input class="text-input" id="msg-subject" name="subject" type="text" />
-                    <label for="msg-subject"> Subject <span class="req">*</span></label><span class="b-border"></span><span class="error-msg"></span>
-                  </div>
-                </div>
-                <div class="col-12 ">
-                  <div class="   input-wrapper">
-                    <textarea class=" text-input" id="msg-text" name="message"></textarea>
-                    <label for="msg-text"> your message <span class="req">*</span></label><span class="b-border"></span><i></i><span class="error-msg"></span>
-                  </div>
-                </div>
-                <div class="col-12 submit-wrapper">
-                  <button class=" btn-solid" id="submit-btn" type="button" name="UserSubmit">Send your message</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="map-box pt-5 mt-5">
-    <div class="mapouter">
-      <div class="gmap_canvas">
-        <iframe class="map-iframe" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d56047.048573907996!2d77.20488692980211!3d28.601560666325913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1648754007828!5m2!1sen!2sin"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End contact-us -->
+<main class="container py-12">
 
+  <!-- Contact Us Section -->
+  <section id="contact-content">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 mb-12">
+      <h1 class="text-5xl font-extrabold text-center text-stone-900 mb-10 leading-tight">Get in Touch with Maa Dharitri Crafts</h1>
+
+      <p class="text-xl text-gray-700 leading-loose text-center mb-12 max-w-3xl mx-auto">
+        We'd love to hear from you! Whether you have a question about our products, want to collaborate, or simply wish to learn more about our mission, feel free to reach out.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-3xl font-bold text-stone-800 mb-6">Send Us a Message</h2>
+          <form class="space-y-6" id="contact-form">
+            @csrf
+            <div>
+              <label for="name" class="block text-gray-700 text-lg font-semibold mb-2">Your Name</label>
+              <input type="text" id="name" name="name" class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" placeholder="John Doe">
+            </div>
+            <div>
+              <label for="email" class="block text-gray-700 text-lg font-semibold mb-2">Your Email</label>
+              <input type="email" id="email" name="email" class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" placeholder="john.doe@example.com">
+            </div>
+            <div>
+              <label for="subject" class="block text-gray-700 text-lg font-semibold mb-2">Subject</label>
+              <input type="text" id="subject" name="subject" class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" placeholder="Inquiry about products / Collaboration etc.">
+            </div>
+            <div>
+              <label for="message" class="block text-gray-700 text-lg font-semibold mb-2">Your Message</label>
+              <textarea id="message" name="message" rows="7" class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" placeholder="Type your message here..."></textarea>
+            </div>
+            <button type="submit" id="submit-btn" class="btn-primary w-full sm:w-auto">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Contact Details & Map -->
+        <div>
+          <h2 class="text-3xl font-bold text-stone-800 mb-6">Our Location & Details</h2>
+          <div class="bg-stone-50 rounded-xl shadow-md p-8 mb-8 border-l-4 border-teal-600">
+            <p class="text-gray-700 text-lg mb-3"><strong>Address:</strong>1299, GALI NO.- 38, D.D.A FLAT MADANGIR, NEW DELHI - 110062, INDIA</p>
+            <p class="text-gray-700 text-lg mb-3"><strong>Phone:</strong> +91 9811808311</p>
+            <p class="text-gray-700 text-lg mb-3"><strong>Email:</strong> maadharitriterracotta@gmail.com</p>
+          </div>
+
+          <h2 class="text-3xl font-bold text-stone-800 mb-6">Find Us on Map</h2>
+          <div class="rounded-xl overflow-hidden shadow-xl border border-gray-200">
+            <!-- Replace with your actual Google Maps embed code -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.7023998781374!2d77.22568002495255!3d28.518600189246353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce1900a6765b3%3A0xbaabc6c7bea85ce8!2sDDA%20Flats%2C%20Doctor%20Ambedkar%20Nagar%2C%20Madangir%2C%20New%20Delhi%2C%20Delhi%20110062!5e0!3m2!1sen!2sin!4v1753123740871!5m2!1sen!2sin" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 @endsection
 
 @section('front-footer')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+        // Get the form and button elements
+        const form = document.getElementById('contact-form');
+        const submitButton = document.getElementById('submit-btn');
 
+        // Add a submit event listener to the form
+        form.addEventListener('submit', function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Disable the button and show a loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            // Create a FormData object from the form
+            const formData = new FormData(form);
+
+            // Send the form data using the Fetch API
+            fetch('{{ route("contact.submit") }}', {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRF-TOKEN': formData.get('_token')
+                },
+                body: formData
+            })
+            .then(response => {
+                // Check if the response is ok before trying to parse JSON
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // If the response is successful
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: data.message,
+                    });
+                    form.reset(); // Clear the form
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: data.message,
+                    });
+                }
+            })
+            .catch(error => {
+                // Handle any network or server errors
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: 'An unexpected error occurred. Please try again.',
+                });
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                // Re-enable the button and reset its text
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+            });
+        });
+    });
+</script>
 @endsection

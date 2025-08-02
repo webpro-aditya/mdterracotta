@@ -33,6 +33,11 @@ class HomeController extends Controller
         return view('frontend.events');
     }
 
+    public function ourStory()
+    {
+        return view('frontend.our-story');
+    }
+
     public function contact()
     {
         return view('frontend.contact');
@@ -64,5 +69,25 @@ class HomeController extends Controller
     public function thanks()
     {
         return view('frontend.thanks');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('frontend.policies.privacyPolicy');
+    }
+
+    public function termsAndConditions()
+    {
+        return view('frontend.policies.termsAndConditions');
+    }
+
+    public function cancellationRefund()
+    {
+        return view('frontend.policies.cancellationRefund');
+    }
+
+    public function shippingDelivery()
+    {
+        return view('frontend.policies.shippingDelivery');
     }
 }

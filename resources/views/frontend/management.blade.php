@@ -1,161 +1,125 @@
 @extends('layouts.user_type.guest')
 
 @section('page_title', __('Management'))
+@section('front-header')
+<style>
+  /* Button styles for a more professional look */
+  .btn-primary {
+    background-color: #0D9488;
+    /* Teal-700 */
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    /* Slightly less rounded */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
 
+  .btn-primary:hover {
+    background-color: #0F766E;
+    /* Teal-800 */
+    transform: translateY(-2px);
+  }
+
+  /* Custom styles for mobile menu toggle */
+  .mobile-menu-button {
+    display: none;
+    /* Hidden by default */
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+  }
+
+  /* Show button on small screens */
+  @media (max-width: 767px) {
+
+    /* Tailwind's 'md' breakpoint is 768px */
+    .mobile-menu-button {
+      display: block;
+    }
+
+    .nav-menu.active {
+      display: flex;
+      /* Show menu when active */
+      flex-direction: column;
+      /* Stack items vertically */
+      width: 100%;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .nav-menu li {
+      margin: 0.5rem 0;
+    }
+  }
+</style>
+@endsection
 @section('content')
-<!-- Start inner Page hero-->
-<section class="d-flex align-items-center page-hero hero-vegas-slider inner-page-hero" id="page-hero">
-  <div class="overlay-color"></div>
-  <div class="vegas-slider-content" data-vegas-slide-1="{{ asset('front/assets/Images/hero/vegas-slider/1.jpg') }}" data-vegas-slide-2="{{ asset('front/assets/Images/hero/vegas-slider/2.jpg') }}" data-vegas-slide-3="{{ asset('front/assets/images/hero/vegas-slider/3.jpg') }}">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 hero-text-area ">
-          <h1 class="hero-title  wow fadeInUp" data-wow-delay=".2s">Our Management</h1>
-          <nav aria-label="breadcrumb ">
-            <ul class="breadcrumb wow fadeInUp" data-wow-delay=".6s">
-              <li class="breadcrumb-item"><a class="breadcrumb-link" href="index.php"><i class="fas fa-home icon "></i>home</a></li>
-              <li class="breadcrumb-item active">Our Management</li>
-            </ul>
-          </nav>
+<main class="container py-12">
+
+  <!-- Management Section -->
+  <section id="management-content">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 mb-12">
+      <h1 class="text-5xl font-extrabold text-center text-stone-900 mb-10 leading-tight">Meet Our Dedicated Team</h1>
+
+      <p class="text-xl text-gray-700 leading-loose text-center mb-12 max-w-6xl mx-auto">
+        Our management team consists of "National Award Winning" artisans from different backgrounds and experiences. They are recognized as the best Terracotta Handicraft artisans and they encourage everyone to continue with the craft in a more enthusiastic and productive manner, which will ultimately inspire others to emulate them.<br/><br/>
+        <q>
+          We believe in getting our hands dirty & bring something amazing with clay. We believe in taking Terracotta Handicrafts far fewer than other competitors, and making a far higher impact with our uniqueness.
+        </q>
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Member 1 -->
+        <div class="bg-stone-50 rounded-xl shadow-lg p-8 text-center border-t-4 border-teal-600">
+          <img src="{{ asset('assets/images/managers/prem-kumari.jpeg') }}" alt="Prem Kumari" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-stone-300 shadow-md">
+          <h3 class="text-3xl font-bold text-stone-800 mb-2">Prem Kumari</h3>
+          <p class="text-teal-700 text-xl font-semibold mb-4">Director</p>
+          <p class="text-gray-600 text-base leading-relaxed">
+            A visionary leader with over 20 years of experience in social development, Prem Kumari spearheaded the establishment of Maa Dharitri, driven by a deep commitment to rural artisan empowerment.
+          </p>
+        </div>
+        <!-- Member 2 -->
+        <div class="bg-stone-50 rounded-xl shadow-lg p-8 text-center border-t-4 border-teal-600">
+          <img src="{{ asset('assets/images/managers/har-kishan.jpeg') }}" alt="Har Kishan" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-stone-300 shadow-md">
+          <h3 class="text-3xl font-bold text-stone-800 mb-2">Har Kishan</h3>
+          <p class="text-teal-700 text-xl font-semibold mb-4">Director</p>
+          <p class="text-gray-600 text-base leading-relaxed">
+            Har Kishan meticulously manages our operational strategies, ensuring efficiency in production, logistics, and supply chain management, vital for our artisans' success.
+          </p>
+        </div>
+        <!-- Member 3 -->
+        <div class="bg-stone-50 rounded-xl shadow-lg p-8 text-center border-t-4 border-teal-600">
+          <img src="{{ asset('assets/images/managers/ram-rati.jpeg') }}" alt="Ram Rati" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-stone-300 shadow-md">
+          <h3 class="text-3xl font-bold text-stone-800 mb-2">Ram Rati</h3>
+          <p class="text-teal-700 text-xl font-semibold mb-4">Director</p>
+          <p class="text-gray-600 text-base leading-relaxed">
+            Ram Rati drives our global outreach, connecting our unique terracotta crafts with a wider audience through innovative marketing and partnership initiatives.
+          </p>
+        </div>
+        <!-- Member 4 -->
+        <div class="bg-stone-50 rounded-xl shadow-lg p-8 text-center border-t-4 border-teal-600">
+          <img src="{{ asset('assets/images/managers/daya-chand.jpeg') }}" alt="Daya Chand" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-stone-300 shadow-md">
+          <h3 class="text-3xl font-bold text-stone-800 mb-2">Daya Chand</h3>
+          <p class="text-teal-700 text-xl font-semibold mb-4">Director</p>
+          <p class="text-gray-600 text-base leading-relaxed">
+            Works directly with artisans, understanding their needs and facilitating training programs to enhance their skills and well-being.
+          </p>
+        </div>
+        <!-- Member 5 -->
+        <div class="bg-stone-50 rounded-xl shadow-lg p-8 text-center border-t-4 border-teal-600">
+          <img src="{{ asset('assets/images/managers/girraj-prasad.jpeg') }}" alt="Girraj Prasad" class="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-4 border-stone-300 shadow-md">
+          <h3 class="text-3xl font-bold text-stone-800 mb-2">Girraj Prasad</h3>
+          <p class="text-teal-700 text-xl font-semibold mb-4">Director</p>
+          <p class="text-gray-600 text-base leading-relaxed">
+            Ensures the financial health and administrative efficiency of our organization, providing crucial support for all our initiatives and programs.
+          </p>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- End inner Page hero-->
+  </section>
 
-<!-- Start our team Section-->
-<section class="our-team mega-section " id="our-team">
-  <div class="container">
-    <div class="section-heading center-heading">
-      <h2 class="section-title  wow fadeInUp" data-wow-delay=".2s"> our <span class='hollow-text'></span> Management<span class="title-design-element "></span></h2>
-      <div class="line line-on-center wow fadeIn" data-wow-delay=".7s"></div>
-    </div>
-  </div>
-  <div class="container-fluid">
-    <div class="row">
-      <!--first Team Member-->
-      <div class="col-12 col-md-6  col-lg-3 mx-md-auto ">
-        <div class="tm-member-card   wow   fadeInUp" data-wow-delay="0.2s" data-tilt="data-tilt">
-          <div class="tm-image js-tilt"><a class="tm-link" href="team-member.html">
-              <div class="overlay overlay-color"></div><img class="img-fluid " src="{{ asset('front/images/renu.jpg') }}" alt="Team Member" />
-            </a>
-          </div>
-          <div class="tm-details"><a class="tm-link" href="team-member.html">
-              <h6 class="tm-name">Smt. Renu Srivastava</h6>
-            </a><span class="tm-role">President </span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <!--Start see-more-area-->
-  <!--<div class="see-more-area   wow fadeInUp" data-wow-delay="0.8s"><a class=" btn-solid" href="#0">all team members</a></div>-->
-</section>
-<!-- End our team Section-->
-
-
-<div class="container">
-  <div class="section-heading center-heading">
-    <h2 class="section-title  wow fadeInUp" data-wow-delay=".2s">LIST OF THE GOVERNING BODY FOR THE YEAR <span class='hollow-text'>2020-2021</span><span class="title-design-element "></span></h2>
-    <div class="line line-on-center wow fadeIn" data-wow-delay=".7s"></div>
-  </div>
-</div>
-
-<div class="container">
-  <table class="table table-striped table-bordered table-hover">
-    <thead class="table-danger">
-      <tr>
-        <th>S. No.</th>
-        <th>Name &amp; Address</th>
-        <th>Post</th>
-        <th>Profession</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Smt Renu Srivastava<br>
-          W/o Sh. Pramod Srivastava<br>
-          J-IInd/70, Madangir <br>
-          New Delhi-110062
-        </td>
-        <td>President</td>
-        <td>Social Worker</td>
-      </tr>
-
-      <tr>
-        <td>2</td>
-        <td>Ms. Prem Kumari <br>
-          D/o Late Pyare Lal<br>
-          38 /1299, DDA Flats,<br>
-          Madangir, New Delhi-110062<br>
-          Mobile:9811808311
-        </td>
-        <td>Secretary</td>
-        <td>Professional</td>
-      </tr>
-
-      <tr>
-        <td>3</td>
-        <td>Smt. Sheela <br>
-          W/o Sh Brij Mohan<br>
-          D -70 Fatehpuri Beri,<br>
-          Harswaroop Colony, New Delhi -110074
-        </td>
-        <td>Treasurer</td>
-        <td>House wife</td>
-      </tr>
-
-      <tr>
-        <td>4</td>
-        <td>Smt. Kiran Devi <br>
-          W/o Sh. Karan Singh Sayal<br>
-          H.No.515 Fatehpur Beri Ext. <br>
-          New Delhi – 110074
-        </td>
-        <td>Social Worker</td>
-        <td>Ex. Memeber</td>
-      </tr>
-
-      <tr>
-        <td>5</td>
-        <td>Sh. Amrendra Kumar Singh<br>
-          S/o Sh. Onkar Nath Singh<br>
-          254, Gadmal pur<br>
-          Tehsil- Sikander pur,
-        </td>
-        <td>Member</td>
-        <td>Professional</td>
-      </tr>
-
-      <tr>
-        <td>6</td>
-        <td>Smt. Bina Devi <br>
-          W/o Sh. Shiv Sagar <br>
-          H.No. C – 20 Fatehpur Beri Village <br>
-          New Delhi -110074
-
-        </td>
-        <td>Member</td>
-        <td>House wife </td>
-      </tr>
-
-      <tr>
-        <td>7</td>
-        <td>Smt. Usha Mishra<br>
-          W/o Sh. Rameshwar Mishra<br>
-          H.No. 278 A H.S. Colony Fatehpur<br>
-          Beri Village New Delhi -110074
-
-        </td>
-        <td>Member</td>
-        <td>House wife</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+</main>
 @endsection
 
 @section('front-footer')

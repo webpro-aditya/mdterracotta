@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -49,7 +50,9 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/management', [HomeController::class, 'management'])->name('front.management');
     Route::get('/products', [ProductController::class, 'index'])->name('front.products');
     Route::get('/events', [HomeController::class, 'events'])->name('front.events');
+    Route::get('/our-story', [HomeController::class, 'ourStory'])->name('front.ourStory');
     Route::get('/contact', [HomeController::class, 'contact'])->name('front.contact');
+    Route::post('/contact', [ContactController::class, 'handleSubmission'])->name('contact.submit');
     Route::get('/e-brochure', [HomeController::class, 'eBrochure'])->name('front.e-brochure');
     // Route::get('/checkout/{id}', [StripeController::class, 'checkout'])->name('front.checkout');
     Route::get('/checkout/{id}', [RazorpayController::class, 'index'])->name('front.checkout');
@@ -58,6 +61,13 @@ Route::group(['middleware' => 'guest'], function () {
 
 
     Route::get('/thanks', [HomeController::class, 'thanks'])->name('page.thanks');
+
+    //Policies, Terms
+    Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('page.privacyPolicy');
+    Route::get('/terms-and-conditions', [HomeController::class, 'termsAndConditions'])->name('page.termsAndConditions');
+    Route::get('/cancellation-refund', [HomeController::class, 'cancellationRefund'])->name('page.cancellationRefund');
+    Route::get('/shipping-delivery', [HomeController::class, 'shippingDelivery'])->name('page.shippingDelivery');
+
 
     //Page Not Found
     // Route::fallback([PageController::class, 'pageNotFound'])->name('pageNotFound');

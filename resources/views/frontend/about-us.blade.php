@@ -2,252 +2,128 @@
 
 @section('page_title', __('About Us'))
 
+@section('front-header')
+<style>
+
+    /* Button styles for a more professional look */
+    .btn-primary {
+        background-color: #0D9488;
+        /* Teal-700 */
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        /* Slightly less rounded */
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0F766E;
+        /* Teal-800 */
+        transform: translateY(-2px);
+    }
+
+    /* Custom styles for mobile menu toggle */
+    .mobile-menu-button {
+        display: none;
+        /* Hidden by default */
+        cursor: pointer;
+        font-size: 2rem;
+        color: white;
+    }
+
+    /* Show button on small screens */
+    @media (max-width: 767px) {
+
+        /* Tailwind's 'md' breakpoint is 768px */
+        .mobile-menu-button {
+            display: block;
+        }
+
+        .nav-menu.active {
+            display: flex;
+            /* Show menu when active */
+            flex-direction: column;
+            /* Stack items vertically */
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .nav-menu li {
+            margin: 0.5rem 0;
+        }
+    }
+</style>
+@endsection
 @section('content')
-<!--End Page Header-->
-<!-- Start inner Page hero-->
-<section class="d-flex align-items-center page-hero hero-vegas-slider inner-page-hero " id="page-hero">
-    <div class="overlay-color"></div>
-    <div class="vegas-slider-content" data-vegas-slide-1="{{ asset('front/images/hero/vegas-slider/1.jpg') }}" data-vegas-slide-2="{{ asset('front/images/hero/vegas-slider/2.jpg') }}" data-vegas-slide-3="{{ asset('front/images/hero/vegas-slider/3.jpg') }}">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 hero-text-area ">
-                    <h1 class="hero-title  wow fadeInUp" data-wow-delay=".2s">About Us</h1>
-                    <nav aria-label="breadcrumb ">
-                        <ul class="breadcrumb wow fadeInUp" data-wow-delay=".6s">
-                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="index.php"><i class="fas fa-home icon "></i>home</a></li>
-                            <li class="breadcrumb-item active">about us</li>
-                        </ul>
-                    </nav>
+<main class="container py-12">
+    <!-- About Us Section -->
+    <section id="about-content">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 mb-12">
+            <h1 class="text-5xl font-extrabold text-center text-stone-900 mb-10 leading-tight">About Maa Dharitri Terracotta Craft Producer</h1>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
+                <div class="lg:order-2">
+                    <img src="{{ asset('assets/images/banners/1.jpeg') }}" alt="About Us Image" class="rounded-xl shadow-lg w-full h-auto object-cover">
+                </div>
+                <div class="lg:order-1 prose max-w-none text-gray-700 text-lg leading-relaxed">
+                    <p class="mb-6">
+                        Maa Dharitri Terracotta Craft Producer is a non-governmental organization founded with a profound commitment to preserving and promoting the ancient art of terracotta craftsmanship. Our journey began with the vision of empowering rural artisans and ensuring that their invaluable skills are passed down through generations.
+                    </p>
+                    <p class="mb-6">
+                        We believe that traditional crafts are not just products; they are a vibrant expression of culture, heritage, and human creativity. Our work focuses on creating sustainable livelihoods for artisan communities, providing them with fair access to markets, and fostering an environment where their artistry can flourish.
+                    </p>
+                    <p>
+                        Through our initiatives, we aim to bridge the gap between traditional craftsmanship and contemporary appreciation, bringing the unique beauty of terracotta into homes worldwide while making a tangible difference in the lives of those who create it.
+                    </p>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<!-- End inner Page hero-->
-<!-- Start  about Section-->
-<section class="about mega-section" id="about">
-    <div class="container">
-        <!-- Start first about div-->
-        <div class="content-block  ">
-            <div class="row">
-                <div class="col-12 col-lg-6 d-flex align-items-center about-col pad-end order-1 order-lg-0 wow fadeInUp "
-                    data-wow-delay="0.6s">
-                    <div class="text-area "><span class="tag-line">about Us</span>
-                        <div class="section-heading side-heading  light-title">
-                            <h2 class="section-title ">Providing <span class='featured-text'>Guidance</span> Empowering Masses.<span class="title-design-element "></span></h2>
-                        </div>
-                        <p class=" init-text">
-                            The main objective of "Rajbala Beads &amp; ZariCraft Self Help Group" is to develop and promote handicrafts, support marketing of Terracotta handicraft and take up wide publicity of Handicrafts and welfare activities for the benefit of the artisans. </p>
 
-                        <div class="info-items-list">
-                            <div class="row no-gutters">
-                                <div class="col-12 ">
-                                    <ul class="menu-items">
-                                        <li class="info-item"><i class="fas fa-chess-rook hollow-text info-icon"></i>
-                                            <div class="info-content">
-                                                <h5 class="info-title">Our Mission</h5>
-                                                <p class="info-text">Our mission is to empower beads &amp; zaricraft artisans to earn sustainable incomes and, in doing so, fight poverty.</p>
-                                            </div>
-                                        </li>
-                                        <li class="info-item"><i class="fas fa-chart-line  hollow-text info-icon "></i>
-                                            <div class="info-content">
-                                                <h5 class="info-title">Our Plan </h5>
-                                                <p class="info-text">To collaborate, visualize, innovate and then to bring to empower beads &amp; zaricraft artisans.</p>
-                                            </div>
-                                        </li>
-                                        <li class="info-item"><i class="fas fa-database hollow-text info-icon "></i>
-                                            <div class="info-content">
-                                                <h5 class="info-title">Our Vision</h5>
-                                                <p class="info-text">Our Artisan must be financially independent and become master their crafts, only with the intention to financially support their family. </p>
-                                            </div>
-                                        </li>
-                                        <li class="info-item"><i class="fas fa-database hollow-text info-icon "></i>
-                                            <div class="info-content">
-                                                <h5 class="info-title">Our Motive</h5>
-                                                <p class="info-text">Constant quest for art provides a learning platform for the new generation to explore the art of beads &amp; zaricraft. </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cta-area wow fadeInUp" data-wow-delay=".8s"><a class=" btn-solid "
-                                href="{{ route('front.about') }}">Read more</a>
-                            <!-- <div class="signature ">
-                  <div class="signature-img"></div>
-                  <div class="signature-name">CEO &amp; Founder </div>
-                </div> -->
-                        </div>
+            <div class="bg-teal-50 rounded-xl shadow-lg p-8 mb-12 border-b-4 border-teal-600">
+                <h2 class="text-4xl font-bold text-center text-stone-900 mb-8">Our Core Values</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="text-5xl text-teal-700 mb-4">&#128170;</div> <!-- Empowerment -->
+                        <h3 class="text-2xl font-semibold text-stone-800 mb-2">Empowerment</h3>
+                        <p class="text-gray-600 text-base">Fostering economic independence and dignity for artisans.</p>
                     </div>
-                </div>
-                <div class="col-12 col-lg-6 d-flex align-items-center about-col order-0 order-lg-1 wow fadeInUp"
-                    data-wow-delay="0.2s">
-                    <div class="img-area  " data-tilt>
-                        <!-- <div class="photo-banner-end">
-                <span class="number">46 </span>
-                <p class="banner-text">years of Exprince</p>
-                <div class="line line-on-center  my-1"></div>
-              </div> -->
-                        <div class="image">
-                            <div class="overlay-color"></div><img class="about-img  img-fluid " src="{{ asset('front/images/star.jpg') }}"
-                                alt="Our vision">
-                        </div>
-                        <div class="video-wrapper on-start ">
-                            <div class="play-btn-col-dir"><a class="video-link"
-                                    href="https://www.youtube.com/watch?v=BYs7zlyT_C8" role="button"
-                                    data-fancybox="data-fancybox">
-                                    <div class="play-video-btn">
-                                        <div class="play-btn"> <i class="fas fa-play icon"></i></div>
-                                    </div>
-                                </a></div>
-                        </div>
+                    <div class="text-center">
+                        <div class="text-5xl text-teal-700 mb-4">&#127793;</div> <!-- Sustainability -->
+                        <h3 class="text-2xl font-semibold text-stone-800 mb-2">Sustainability</h3>
+                        <p class="text-gray-600 text-base">Promoting eco-friendly practices and responsible resource management.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl text-teal-700 mb-4">&#127912;</div> <!-- Craftsmanship -->
+                        <h3 class="text-2xl font-semibold text-stone-800 mb-2">Craftsmanship</h3>
+                        <p class="text-gray-600 text-base">Upholding the highest standards of traditional artistry and quality.</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--End first about div-->
-    </div>
-</section>
-<!-- End  about Section-->
 
-<!-- Start  blog Section-->
-<section class="blog blog-home mega-section  " id="blog">
-    <div class="container ">
-        <div class="section-heading center-heading">
-            <h2 class="section-title  wow fadeInUp" data-wow-delay=".2s">latest <span class='hollow-text'>Activities</span><span
-                    class="title-design-element "></span></h2>
-            <div class="line line-on-center wow fadeIn" data-wow-delay=".7s"></div>
-        </div>
-        <div class="row ">
-            <div class="col-12 ">
-                <div class="posts-grid ">
-                    <div class="row">
-                        <div class="col-12 col-lg-4 ">
-                            <div class="post-box"> <a class="post-link" href="activities.php">
-                                    <div class="post-img-wrapper">
-                                        <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                                            src="{{ asset('front/images/events/IMG_1-min.jpg') }}" alt="" />
-                                    </div>
-                                </a>
-                                <div class="post-summary">
-
-
-                                    <div class="post-text"><a class="post-link" href="activities.php">
-                                            <h2 class="post-title"> as a rule love what you do to do what you love</h2>
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 ">
-                            <div class="post-box"> <a class="post-link" href="activities.php">
-                                    <div class="post-img-wrapper">
-                                        <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                                            src="{{ asset('front/images/events/IMG_8-min.jpg') }}" alt="" />
-                                    </div>
-                                </a>
-                                <div class="post-summary">
-                                    <div class="post-text"><a class="post-link" href="activities.php">
-                                            <h2 class="post-title"> stories of our great fathers lights our pathes</h2>
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 ">
-                            <div class="post-box"> <a class="post-link" href="activities.php">
-                                    <div class="post-img-wrapper">
-                                        <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                                            src="{{ asset('front/images/events/IMG_17-min.jpg') }}" alt="" />
-                                    </div>
-                                </a>
-                                <div class="post-summary">
-                                    <div class="post-text"><a class="post-link" href="activities.php">
-                                            <h2 class="post-title"> our goal is making your fancy thoughts exist</h2>
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 ">
-                            <div class="post-box"> <a class="post-link" href="activities.php">
-                                    <div class="post-img-wrapper">
-                                        <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                                            src="{{ asset('front/images/events/IMG_28-min.jpg') }}" alt="" />
-                                    </div>
-                                </a>
-                                <div class="post-summary">
-                                    <div class="post-text"><a class="post-link" href="activities.php">
-                                            <h2 class="post-title"> our goal is making your fancy thoughts exist</h2>
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 ">
-                            <div class="post-box"> <a class="post-link" href="activities.php">
-                                    <div class="post-img-wrapper">
-                                        <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                                            src="{{ asset('front/images/events/IMG_37-min.jpg') }}" alt="" />
-                                    </div>
-                                </a>
-                                <div class="post-summary">
-
-                                    <div class="post-text"><a class="post-link" href="activities.php">
-                                            <h2 class="post-title"> stories of our great fathers lights our pathes</h2>
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 ">
-                            <div class="post-box"> <a class="post-link" href="activities.php">
-                                    <div class="post-img-wrapper">
-                                        <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                                            src="{{ asset('front/images/events/IMG_50-min.jpg') }}" alt="" />
-                                    </div>
-                                </a>
-                                <div class="post-summary">
-                                    <div class="post-text"><a class="post-link" href="activities.php">
-                                            <h2 class="post-title"> stories of our great fathers lights our pathes</h2>
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <h2 class="text-4xl font-bold text-center text-stone-900 mb-8">Our Mission & Vision</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-stone-50 rounded-xl shadow-md p-8 border-l-4 border-teal-600">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-4">Our Mission</h3>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        To create a robust platform that connects skilled terracotta artisans with global markets, ensuring fair compensation and fostering the continuity of their ancestral craft through skill development and ethical practices.
+                    </p>
+                </div>
+                <div class="bg-stone-50 rounded-xl shadow-md p-8 border-l-4 border-teal-600">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-4">Our Vision</h3>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        To envision a world where traditional terracotta art is celebrated and cherished, where artisans thrive economically and culturally, and where their heritage enriches global communities.
+                    </p>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<!-- End  blog Section-->
 
-<!-- Start  take-action Section-->
-<section class="take-action mega-section " id="take-action">
-    <div class="overlay-photo-image-bg parallax "></div>
-    <div class="overlay-color "></div>
-    <div class="cta-wrapper">
-        <div class="container">
-            <div class="section-heading center-heading">
-                <h2 class="section-title  wow fadeInUp" data-wow-delay=".2s">Still Have More <span class='hollow-text'>Questions</span>?<span class="title-design-element "></span></h2>
-                <!--<p class="section-subtitle wow fadeInUp" data-wow-delay=".6s">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, architecto cupiditate odio rerum est</p>-->
-                <div class="line line-on-center wow fadeIn" data-wow-delay=".7s"></div>
+            <div class="text-center mt-12">
+                <a href="{{ route('front.contact') }}" class="btn-primary">Get in Touch</a>
             </div>
-            <!--Start .see-more-area-->
-            <div class=" see-more-area wow fadeInUp" data-wow-delay="0.8s"><a class=" btn-solid cta-link" href="contact-us.php">get in touch</a></div>
-            <!--End Of .see-more-area        -->
         </div>
-    </div>
-</section>
-<!-- End  take-action Section-->
+    </section>
 
+</main>
 @endsection
 
 @section('front-footer')

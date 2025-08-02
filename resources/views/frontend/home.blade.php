@@ -1,618 +1,349 @@
 @extends('layouts.user_type.guest')
 
-@section('page_title', __('Rajbala Self Help Group'))
+@section('page_title', __('Maadhatri Terracotta Craft Producer'))
 @section('front-header')
+<style>
+  /* Custom styles for the slider */
+  .slider-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    /* rounded-xl */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+  }
 
+  .slider-wrapper {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+    /* Slightly slower transition */
+  }
+
+  .slider-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    height: 550px;
+    /* Slightly taller slider images */
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    /* Stronger text shadow */
+    font-size: 3rem;
+    /* Larger font size for impact */
+    font-weight: 800;
+    /* Extra bold font */
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .slider-item p {
+    margin-bottom: 1rem;
+  }
+
+  .slider-item .slider-description {
+    font-size: 1.25rem;
+    font-weight: 500;
+    max-width: 700px;
+    line-height: 1.6;
+  }
+
+  .slider-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Slightly lighter overlay */
+    color: white;
+    padding: 0.75rem 1.25rem;
+    /* Larger buttons */
+    border-radius: 9999px;
+    /* rounded-full */
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.8rem;
+    /* Larger icon */
+    transition: background-color 0.3s ease;
+  }
+
+  .slider-nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .slider-nav-button.left {
+    left: 1.5rem;
+    /* More spacing */
+  }
+
+  .slider-nav-button.right {
+    right: 1.5rem;
+    /* More spacing */
+  }
+
+  /* Product card hover effect */
+  .product-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    /* More pronounced lift */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    /* Stronger shadow on hover */
+  }
+
+  /* Button styles for a more professional look */
+  .btn-primary {
+    background-color: #0D9488;
+    /* Teal-700 */
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    /* Slightly less rounded */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #0F766E;
+    /* Teal-800 */
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    border: 2px solid #0D9488;
+    /* Teal-700 border */
+    color: #0D9488;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: #0D9488;
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Custom styles for mobile menu toggle */
+  .mobile-menu-button {
+    display: none;
+    /* Hidden by default */
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+  }
+
+  /* Show button on small screens */
+  @media (max-width: 767px) {
+
+    /* Tailwind's 'md' breakpoint is 768px */
+    .mobile-menu-button {
+      display: block;
+    }
+
+    .nav-menu.active {
+      display: flex;
+      /* Show menu when active */
+      flex-direction: column;
+      /* Stack items vertically */
+      width: 100%;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .nav-menu li {
+      margin: 0.5rem 0;
+    }
+  }
+</style>
 @endsection
 @section('content')
-<!-- Start  Page hero-->
-<section class="page-hero hero-swiper-slider slider-fade  d-flex align-items-center" id="page-hero">
-    <!--Start  Swiper JS slider-->
-    <div class="slider swiper-container">
-      <div class="swiper-wrapper ">
-        <!--first slider-->
-        <div class="swiper-slide">
-          <div class="slide-bg-img" data-background="{{ asset('front/images/events/IMG_1-min.JPG') }}" >
-            <div class="overlay-color"></div>
-          </div>
-          <div class="container">
-            <div class="hero-text-area">
-              <iv class="row">
-                <div class="col-12   col-lg-10   ">
-                  <div class="tag-line">Together We Can </div>
-                </div>
-                <div class="col-12   col-lg-10   ">
-                  <h1 class="slide-title  "> <span class="first-word hollow-text"> Rajbala
-                      <span class="title-design-element "></span></span>
-                    Selfhelp <br> Group
-                    <!-- <span class="featured-text">business.</span> -->
-                  </h1>
-                </div>
-                <div class="col-9   col-lg-6   ">
-                  <p class="slide-subtitle ">
-                  Zari work is an intricate art of weaving threads made up of fine gold or silver. These threads are further woven into fabrics primarily made up of silk to create intricate patterns.
+<main class="container py-12">
 
-                  </p>
-                </div>
-                <div class="col-12   ">
-                  <div class="cta-links-area"><a class=" btn-solid cta-link cta-link-primary  " href="#0">start
-                      now</a><a class=" btn-solid cta-link  " href="#0">Contact us</a></div>
-                </div>
-              </iv>
-            </div>
+  <!-- Homepage Section -->
+  <section id="home-content">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 mb-12">
+      <h1 class="text-6xl font-extrabold text-center text-stone-900 mb-10 leading-tight">Crafting Heritage, Empowering Futures</h1>
+
+     <!-- Slider Section -->
+      <div class="slider-container w-full mx-auto mb-16">
+        <div class="slider-wrapper" id="slider-wrapper">
+          <div class="slider-item" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url({{ asset('assets/images/banners/1.jpeg') }});">
+            <p>Exquisite Craftsmanship</p>
+            <p class="slider-description text-xl font-light">Each piece tells a story of tradition, skill, and dedication.</p>
+          </div>
+
+          <div class="slider-item" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url({{ asset('assets/images/banners/2.jpeg') }});">
+            <p>Artisan Empowerment</p>
+            <p class="slider-description text-xl font-light">Supporting rural communities through sustainable livelihoods.</p>
+          </div>
+
+          <div class="slider-item" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url({{ asset('assets/images/banners/3.jpeg') }});">
+            <p>Timeless Terracotta</p>
+            <p class="slider-description text-xl font-light">Bringing ancient art into modern homes.</p>
           </div>
         </div>
-        <!--second slider-->
-        <div class="swiper-slide">
-          <div class="slide-bg-img" data-background="{{ asset('front/images/events/IMG_2-min.JPG') }}" >
-            <div class="overlay-color"></div>
-          </div>
-          <div class="container">
-            <div class="hero-text-area   ">
-              <div class="row">
-                <div class="col-12   col-lg-10   ">
-                  <div class="tag-line">Together We Can </div>
-                </div>
-                <div class="col-12   col-lg-10   ">
-                  <h1 class="slide-title  "> <span class="first-word hollow-text"> Rajbala
-                      <span class="title-design-element "></span></span>
-                    Selfhelp <br>Group
-                    <!-- <span class="featured-text"> solutions!</span> -->
-                  </h1>
-                </div>
-                <div class="col-10   col-lg-6   ">
-                  <p class="slide-subtitle ">
-                  Zari work is an intricate art of weaving threads made up of fine gold or silver. These threads are further woven into fabrics primarily made up of silk to create intricate patterns.
+        <button class="slider-nav-button left" id="prev-slide">&#10094;</button>
+        <button class="slider-nav-button right" id="next-slide">&#10095;</button>
+      </div>
 
-                  </p>
-                </div>
-                <div class="col-12">
-                  <div class="cta-links-area "><a class=" btn-solid cta-link  cta-link-primary" href="#0">start
-                      now</a>
-                    <div class="play-btn-row-dir"><a class="video-link"
-                        href="https://www.youtube.com/watch?v=BYs7zlyT_C8" role="button"
-                        data-fancybox="data-fancybox">
-                        <div class="play-video-btn">
-                          <div class="play-btn"> <i class="fas fa-play icon"></i></div>
-                        </div>
-                      </a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+      <div class="text-center mb-16">
+        <p class="text-xl text-gray-700 leading-loose mb-8 max-w-3xl mx-auto">
+          Maa Dharitri Terracotta Craft Producer is a non-profit organization dedicated to preserving the rich heritage of terracotta artistry while fostering economic independence for skilled artisans. We connect traditional craftsmanship with global markets, ensuring fair trade and sustainable practices.
+        </p>
+        <p class="text-xl text-gray-700 leading-loose max-w-3xl mx-auto">
+          Discover the beauty of handcrafted terracotta and become a part of a movement that celebrates culture, empowers communities, and promotes ethical artistry.
+        </p>
+      </div>
+
+      <!-- Our Impact Section -->
+      <h2 class="text-4xl font-bold text-center text-stone-900 mb-10">Our Impact</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div class="bg-teal-50 rounded-xl shadow-lg p-8 text-center border-b-4 border-teal-600">
+          <p class="text-6xl font-extrabold text-teal-700 mb-4">500+</p>
+          <h3 class="text-2xl font-semibold text-stone-800 mb-2">Artisans Supported</h3>
+          <p class="text-gray-600 text-base">Providing sustainable livelihoods and skill development.</p>
+        </div>
+        <div class="bg-teal-50 rounded-xl shadow-lg p-8 text-center border-b-4 border-teal-600">
+          <p class="text-6xl font-extrabold text-teal-700 mb-4">5+</p>
+          <h3 class="text-2xl font-semibold text-stone-800 mb-2">Years of Service</h3>
+          <p class="text-gray-600 text-base">A decade dedicated to preserving traditional crafts.</p>
+        </div>
+        <div class="bg-teal-50 rounded-xl shadow-lg p-8 text-center border-b-4 border-teal-600">
+          <p class="text-6xl font-extrabold text-teal-700 mb-4">100%</p>
+          <h3 class="text-2xl font-semibold text-stone-800 mb-2">Fair Trade</h3>
+          <p class="text-gray-600 text-base">Ensuring ethical practices and fair compensation.</p>
+        </div>
+      </div>
+
+      <!-- Why Choose Us Section -->
+      <h2 class="text-4xl font-bold text-center text-stone-900 mb-10">Why Choose Maa Dharitri Crafts?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div class="bg-stone-50 rounded-xl shadow-md p-8 text-center border-t-4 border-stone-300">
+          <div class="text-6xl text-teal-600 mb-4">&#9996;&#65039;</div> <!-- Hand gesture for handcrafted -->
+          <h3 class="text-2xl font-semibold text-stone-800 mb-2">Authentic Handcrafted Quality</h3>
+          <p class="text-gray-600 text-base">Each product is meticulously crafted by master artisans, ensuring unparalleled quality and authenticity.</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl shadow-md p-8 text-center border-t-4 border-stone-300">
+          <div class="text-6xl text-teal-600 mb-4">&#127757;</div> <!-- Globe for global impact -->
+          <h3 class="text-2xl font-semibold text-stone-800 mb-2">Ethical & Sustainable Sourcing</h3>
+          <p class="text-gray-600 text-base">We are committed to eco-friendly practices and fair wages, supporting both people and planet.</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl shadow-md p-8 text-center border-t-4 border-stone-300">
+          <div class="text-6xl text-teal-600 mb-4">&#128161;</div> <!-- Lightbulb for innovation/unique -->
+          <h3 class="text-2xl font-semibold text-stone-800 mb-2">Unique Artistic Expressions</h3>
+          <p class="text-gray-600 text-base">Discover distinctive designs that blend traditional techniques with contemporary aesthetics.</p>
+        </div>
+      </div>
+
+      <!-- Featured Products Section -->
+      <h2 class="text-4xl font-bold text-center text-stone-900 mb-10">Our Collections</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Product 1 -->
+        <div class="bg-stone-50 rounded-xl shadow-lg overflow-hidden product-card">
+          <img src="{{ asset('assets/images/collections/vases.jpg') }}" alt="Elegant Terracotta Pot" class="w-full h-56 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-stone-800 mb-2">Elegant Terracotta Vases</h3>
+            <p class="text-gray-600 text-base">Hand-thrown and intricately designed, perfect for enhancing any interior space.</p>
+            <!-- <div class="mt-5 flex justify-between items-center">
+              <span class="text-xl font-bold text-teal-900">$25.00</span>
+              <a href="products.html" class="btn-primary">View Collection</a>
+            </div> -->
           </div>
         </div>
-        <!--third slider-->
-        <div class="swiper-slide">
-          <div class="slide-bg-img" data-background="{{ asset('front/images/events/IMG_3-min.JPG') }}" >
-            <div class="overlay-color"></div>
-          </div>
-          <div class="container">
-            <div class="hero-text-area   ">
-              <iv class="row">
-                <div class="col-12   col-lg-10  ">
-                  <div class="tag-line">Together We Can </div>
-                </div>
-                <div class="col-12   col-lg-10  ">
-                  <h1 class="slide-title  "> <span class="first-word hollow-text"> Rajbala
-                      <span class="title-design-element "></span></span>
-                    Selfhelp <br> Group 
-                    <!-- <span class="featured-text">success!</span> -->
-                  </h1>
-                </div>
-                <div class="col-10   col-lg-6   ">
-                  <p class="slide-subtitle ">
-                  Zari work is an intricate art of weaving threads made up of fine gold or silver. These threads are further woven into fabrics primarily made up of silk to create intricate patterns.
-
-                  </p>
-                </div>
-                <div class="col-12   ">
-                  <div class="cta-links-area"><a class=" btn-solid cta-link cta-link-primary " href="#0">start now</a><a
-                      class=" btn-solid cta-link  " href="#0">Contact us</a></div>
-                </div>
-              </iv>
-            </div>
+        <!-- Product 2 -->
+        <div class="bg-stone-50 rounded-xl shadow-lg overflow-hidden product-card">
+          <img src="{{ asset('assets/images/collections/sculptures.jpg') }}" alt="Terracotta Figurine" class="w-full h-56 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-stone-800 mb-2">Artisan Sculptures & Figurines</h3>
+            <p class="text-gray-600 text-base">Captivating pieces reflecting cultural narratives and artistic mastery.</p>
+            <!-- <div class="mt-5 flex justify-between items-center">
+              <span class="text-xl font-bold text-teal-900">$40.00</span>
+              <a href="products.html" class="btn-primary">View Collection</a>
+            </div> -->
           </div>
         </div>
-
-        <div class="swiper-slide">
-          <div class="slide-bg-img" data-background="{{ asset('front/images/events/IMG_4-min.JPG') }}" >
-            <div class="overlay-color"></div>
-          </div>
-          <div class="container">
-            <div class="hero-text-area   ">
-              <iv class="row">
-                <div class="col-12   col-lg-10  ">
-                  <div class="tag-line">Together We Can </div>
-                </div>
-                <div class="col-12   col-lg-10  ">
-                  <h1 class="slide-title  "> <span class="first-word hollow-text"> Rajbala
-                      <span class="title-design-element "></span></span>
-                    Selfhelp <br> Group 
-                    <!-- <span class="featured-text">success!</span> -->
-                  </h1>
-                </div>
-                <div class="col-10   col-lg-6   ">
-                  <p class="slide-subtitle ">
-                  Zari work is an intricate art of weaving threads made up of fine gold or silver. These threads are further woven into fabrics primarily made up of silk to create intricate patterns.
-
-                  </p>
-                </div>
-                <div class="col-12   ">
-                  <div class="cta-links-area"><a class=" btn-solid cta-link cta-link-primary " href="#0">start now</a><a
-                      class=" btn-solid cta-link  " href="#0">Contact us</a></div>
-                </div>
-              </iv>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="slide-bg-img" data-background="{{ asset('front/images/events/IMG_5-min.JPG') }}" >
-            <div class="overlay-color"></div>
-          </div>
-          <div class="container">
-            <div class="hero-text-area   ">
-              <iv class="row">
-                <div class="col-12   col-lg-10  ">
-                  <div class="tag-line">Together We Can </div>
-                </div>
-                <div class="col-12   col-lg-10  ">
-                  <h1 class="slide-title  "> <span class="first-word hollow-text"> Rajbala
-                      <span class="title-design-element "></span></span>
-                    Selfhelp <br> Group 
-                    <!-- <span class="featured-text">success!</span> -->
-                  </h1>
-                </div>
-                <div class="col-10   col-lg-6   ">
-                  <p class="slide-subtitle ">
-                  Zari work is an intricate art of weaving threads made up of fine gold or silver. These threads are further woven into fabrics primarily made up of silk to create intricate patterns.
-
-                  </p>
-                </div>
-                <div class="col-12   ">
-                  <div class="cta-links-area"><a class=" btn-solid cta-link cta-link-primary " href="#0">start now</a><a
-                      class=" btn-solid cta-link  " href="#0">Contact us</a></div>
-                </div>
-              </iv>
-            </div>
+        <!-- Product 3 -->
+        <div class="bg-stone-50 rounded-xl shadow-lg overflow-hidden product-card">
+          <img src="{{ asset('assets/images/collections/home-decor.jpg') }}" alt="Terracotta Lamp" class="w-full h-56 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-stone-800 mb-2">Distinctive Home Decor Accents</h3>
+            <p class="text-gray-600 text-base">From lamps to wall hangings, elevate your home with unique terracotta art.</p>
+            <!-- <div class="mt-5 flex justify-between items-center">
+              <span class="text-xl font-bold text-teal-900">$55.00</span>
+              <a href="products.html" class="btn-primary">View Collection</a>
+            </div> -->
           </div>
         </div>
       </div>
-      <div class="slides-state v-align">
-        <div class="slide-num curent-slide"></div>
-        <!--Add Pagination-->
-        <div class="swiper-pagination"></div>
-        <div class="slide-num slides-count"></div>
+
+      <!-- Call to Action Section -->
+      <div class="bg-stone-800 text-white rounded-2xl shadow-xl p-10 mt-16 text-center">
+        <h2 class="text-4xl font-bold mb-5 leading-tight">Join Us in Empowering Artisans</h2>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">
+          Your engagement directly contributes to the preservation of traditional crafts and the upliftment of rural artisan communities. Explore our full range of products or delve deeper into our inspiring story.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-6">
+          <a href="{{ route('front.products') }}" class="btn-primary bg-teal-600 hover:bg-teal-700">Shop Our Collections</a>
+          <a href="{{ route('front.ourStory') }}" class="btn-secondary border-teal-600 text-teal-300 hover:bg-teal-600 hover:text-white">Learn Our Story</a>
+        </div>
       </div>
+
     </div>
   </section>
-  <!-- End  Page hero-->
-  <!-- Start  services Section-->
-  <section class="services-boxed services-off-grid mega-section" id="services">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-lg-4 align-self-center">
-          <!-- <div class="tag-line wow fadeInDown" data-wow-delay="0s">Beads &amp; Artifacts</div> -->
-          <div class="section-heading side-heading light-title ">
-            <h2 class="section-title wow fadeInUp" data-wow-delay=".2s">Beads &amp; Zaricraft. <span
-                class="title-design-element "></span></h2>
-          </div>
-          <!--Start .see-more-area-->
-             <div class=" see-more-area d-none d-lg-flex justify-content-start wow fadeInUp " data-wow-delay="0.8s">
-              <!-- <a
-                class=" btn-solid " href="services-1.html">see all services</a> -->
-                <p>
-                    Beadwork is the art or craft of attaching beads to one another by stringing them onto a thread or thin wire with a sewing or beading needle or sewing them to cloth. Beads are produced in a diverse range of materials, shapes, and sizes, and vary by the kind of art produced. Most often, beadwork is a form of personal adornment (e.g. jewelry), but it also commonly makes up other artworks.
-                  </p>
-                </p>
-              </div> 
-            <!--End Of .see-more-area                    -->
-        </div>
-        <div class="col-12 col-lg-8">
-          <div Class="row ">
-            <div class="col-12 col-md-6 mt-md-5">
-              <div class="row services-row ">
-                <div class="col-12 mx-auto  ">
-                  <!--Start First service box-->
-                  <div class="service-box  wow fadeInUp featured" data-wow-offset="0" data-wow-delay=".2s"
-                    data-tilt="data-tilt">
-                    <div class="service-icon"><i class="fas fa-pencil-ruler font-icon"></i></div><span
-                      class="service-num hollow-text">1 </span>
-                    <div class="service-content">
-                      <h3 class="service-title">Ancient beading</h3>
-                      <p class="service-text">
-                        The art of creating and utilizing beads is ancient, and ostrich shell beads discovered in Africa can be carbon-dated to 10,000 BC
-                      </p>
-                    </div><a class="read-more" href="#0">read more<i class="fas fa-arrow-right icon "> </i></a>
-                  </div>
-                  <!-- End First service box-->
-                </div>
-                <div class="col-12   mx-auto ">
-                  <!--Start Second service box-->
-                  <div class="service-box  wow fadeInUp " data-wow-offset="0" data-wow-delay=".6s"
-                    data-tilt="data-tilt">
-                    <div class="service-icon"><i class="fas fa-drafting-compass font-icon"></i></div><span
-                      class="service-num hollow-text">2 </span>
-                    <div class="service-content">
-                      <h3 class="service-title">Modern beading</h3>
-                      <p class="service-text">
-                        Today, beadwork is commonly practiced by jewelers, hobbyists, and contemporary artists; artists known for using beadwork as a medium include Liza Lou, Ran Hwang, Hew Locke, Jeffery Gibson, and Joyce J. Scott.
-                      </p>
-                    </div><a class="read-more" href="#0">read more<i class="fas fa-arrow-right icon "> </i></a>
-                  </div>
-                  <!-- End Second service box-->
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="row services-row">
-                <div class="col-12   mx-auto ">
-                  <!--Start Third service box-->
-                  <div class="service-box  wow fadeInUp " data-wow-offset="0" data-wow-delay=".4s"
-                    data-tilt="data-tilt">
-                    <div class="service-icon"><i class="fas fa-layer-group font-icon"></i></div><span
-                      class="service-num hollow-text">3 </span>
-                    <div class="service-content">
-                      <h3 class="service-title">European beadwork</h3>
-                      <p class="service-text">
-                        Beadwork in Europe, much like in Egypt and the Americas, can be traced to the use of bone and shell as adornments amongst early modern humans.
-                      </p>
-                    </div><a class="read-more" href="#0">read more<i class="fas fa-arrow-right icon "> </i></a>
-                  </div>
-                  <!-- End Third service box-->
-                </div>
-                <div class="col-12   mx-auto ">
-                  <!--Start fourth service box-->
-                  <div class="service-box  wow fadeInUp " data-wow-offset="0" data-wow-delay=".2s"
-                    data-tilt="data-tilt">
-                    <div class="service-icon"><i class="fas fa-rocket font-icon"></i></div><span
-                      class="service-num hollow-text">4 </span>
-                    <div class="service-content">
-                      <h3 class="service-title">Native American beadwork</h3>
-                      <p class="service-text">
-                        Native American beadwork, already established via the use of materials like shells, dendrite, claws, and bone, evolved to incorporate glass beads as Europeans brought them to the Americas beginning in the early 17th century.
-                      </p>
-                    </div><a class="read-more" href="#0">read more<i class="fas fa-arrow-right icon "> </i></a>
-                  </div>
-                  <!-- End fourth service box -->
-                </div>
-              </div>
-              <!--Start .see-more-area-->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class=" see-more-area wow fadeInUp d-flex justify-content-start d-lg-none" data-wow-offset="0"
-        data-wow-delay="0.8s"><a class=" btn-solid " href="services-1.html">see all services</a></div>
-      <!--End Of .see-more-area -->
-    </div>
-  </section>
-  <!-- End  services Section-->
-  <!-- Start  about Section-->
-  <section class="about mega-section" id="about">
-    <div class="container">
-      <!-- Start first about div-->
-      <div class="content-block  ">
-        <div class="row">
-          <div class="col-12 col-lg-6 d-flex align-items-center about-col pad-end order-1 order-lg-0 wow fadeInUp "
-            data-wow-delay="0.6s">
-            <div class="text-area "><span class="tag-line">about Us</span>
-              <div class="section-heading side-heading  light-title">
-                <h2 class="section-title ">Providing <span class='featured-text'>Guidance</span> Empowering Masses.<span class="title-design-element "></span></h2>
-              </div>
-              <p class=" init-text">
-              The main objective of "Rajbala Beads &amp; ZariCraft Self Help Group" is to develop and promote handicrafts, support marketing of Terracotta handicraft and take up wide publicity of Handicrafts and welfare activities for the benefit of the artisans. </p>
-             
-              <div class="info-items-list">
-                <div class="row no-gutters">
-                  <div class="col-12 ">
-                    <ul class="menu-items">
-                      <li class="info-item"><i class="fas fa-chess-rook hollow-text info-icon"></i>
-                        <div class="info-content">
-                          <h5 class="info-title">Our Mission</h5>
-                          <p class="info-text">Our mission is to empower beads &amp; zaricraft artisans to earn sustainable incomes and, in doing so, fight poverty.</p>
-                        </div>
-                      </li>
-                      <li class="info-item"><i class="fas fa-chart-line  hollow-text info-icon "></i>
-                        <div class="info-content">
-                          <h5 class="info-title">Our Plan </h5>
-                          <p class="info-text">To collaborate, visualize, innovate and then to bring to empower beads &amp; zaricraft artisans.</p>
-                        </div>
-                      </li>
-                      <li class="info-item"><i class="fas fa-database hollow-text info-icon "></i>
-                        <div class="info-content">
-                          <h5 class="info-title">Our Vision</h5>
-                          <p class="info-text">Our Artisan must be financially independent and become master their crafts, only with the intention to financially support their family. </p>
-                        </div>
-                      </li>
-                      <li class="info-item"><i class="fas fa-database hollow-text info-icon "></i>
-                        <div class="info-content">
-                          <h5 class="info-title">Our Motive</h5>
-                          <p class="info-text">Constant quest for art provides a learning platform for the new generation to explore the art of beads &amp; zaricraft. </p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="cta-area wow fadeInUp" data-wow-delay=".8s"><a class=" btn-solid "
-                  href="about-us.php">Learn more</a>
-                <!-- <div class="signature ">
-                  <div class="signature-img"></div>
-                  <div class="signature-name">CEO &amp; Founder </div>
-                </div> -->
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-6 d-flex align-items-center about-col order-0 order-lg-1 wow fadeInUp"
-            data-wow-delay="0.2s">
-            <div class="img-area  " data-tilt>
-              <!-- <div class="photo-banner-end">
-                <span class="number">46 </span>
-                <p class="banner-text">years of Exprince</p>
-                <div class="line line-on-center  my-1"></div>
-              </div> -->
-              <div class="image">
-                <div class="overlay-color"></div><img class="about-img  img-fluid " src="{{ asset('front/images/star.JPG') }}" 
-                  alt="Our vision">
-              </div>
-              <div class="video-wrapper on-start ">
-                <div class="play-btn-col-dir"><a class="video-link"
-                    href="https://www.youtube.com/watch?v=BYs7zlyT_C8" role="button"
-                    data-fancybox="data-fancybox">
-                    <div class="play-video-btn">
-                      <div class="play-btn"> <i class="fas fa-play icon"></i></div>
-                    </div>
-                  </a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--End first about div-->
-    </div>
-  </section>
-  <!-- End  about Section-->
-  <!-- Start  portfolio-slider Section-->
-  <section class="portfolio portfolio-blocks mega-section   " id="portfolio">
-    <div class="container">
-      <div class="section-heading center-heading">
-        <h2 class="section-title  wow fadeInUp" data-wow-delay=".2s"><span class='hollow-text'></span>our
-          work<span class="title-design-element "></span></h2>
-        <div class="line line-on-center wow fadeIn" data-wow-delay=".7s"></div>
-      </div>
-      <div class="portfolio-wrapper  ">
-        <!--a menu of links to show the photos users needs   -->
-        <ul class="portfolio-btn-list ">
-          <li class="portfolio-btn active " data-filter="*">all</li>
-          <li class="portfolio-btn" data-filter=".accessories">Accessories on Beads</li>
-          <li class="portfolio-btn" data-filter=".paintings">Paintings</li>
-          <li class="portfolio-btn" data-filter=".clothing">Clothing </li>
-        </ul>
-        <div class="portfolio-group wow fadeIn" data-wow-delay=".2s">
-          <div class="row no-gutters">
-            <div class="col-12  col-sm-12  col-lg-7  portfolio-item accessories ">
-              <div class="item"><a class="portfolio-img-link " href="portfolio-single.html">
-                  <div class="overlay overlay-color"></div><img class="portfolio-img  img-fluid "
-                    src="{{ asset('front/images/work/owl.png') }}"  alt="portfolio item photo">
-                </a>
-                <div class="item-info "><span class="tag-line">Acessories</span>
-                  <h3 class="item-title">Owl Design Broach </h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-12  col-sm-6  col-lg-5  portfolio-item clothing ">
-              <div class="item"><a class="portfolio-img-link " href="portfolio-single.html">
-                  <div class="overlay overlay-color"></div><img class="portfolio-img  img-fluid "
-                    src="{{ asset('front/images/work/clothes.png') }}"  alt="portfolio item photo">
-                </a>
-                <div class="item-info "><span class="tag-line">Clothing</span>
-                  <h3 class="item-title">Broach and other ideas of High Fashion Garments</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-12  col-sm-6  col-lg-4  portfolio-item accessories ">
-              <div class="item"><a class="portfolio-img-link " href="portfolio-single.html">
-                  <div class="overlay overlay-color"></div><img class="portfolio-img  img-fluid "
-                    src="{{ asset('front/images/work/necklace.png') }}"  alt="portfolio item photo">
-                </a>
-                <div class="item-info "><span class="tag-line">Accessories</span>
-                  <h3 class="item-title">Necklace</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-12  col-sm-6  col-lg-4  portfolio-item clothing ">
-              <div class="item"><a class="portfolio-img-link " href="portfolio-single.html">
-                  <div class="overlay overlay-color"></div><img class="portfolio-img  img-fluid "
-                    src="{{ asset('front/images/work/clothing-2.png') }}"  alt="portfolio item photo">
-                </a>
-                <div class="item-info "><span class="tag-line">Clothing</span>
-                  <h3 class="item-title">Cuff-Links or Broach designs </h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-12  col-sm-6  col-lg-4  portfolio-item accessories ">
-              <div class="item"><a class="portfolio-img-link " href="portfolio-single.html">
-                  <div class="overlay overlay-color"></div><img class="portfolio-img  img-fluid "
-                    src="{{ asset('front/images/work/bookmarks.png') }}"  alt="portfolio item photo">
-                </a>
-                <div class="item-info "><span class="tag-line">Accessories</span>
-                  <h3 class="item-title">Add title here</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-12  col-sm-6  col-lg-4  portfolio-item paintings ">
-              <div class="item"><a class="portfolio-img-link " href="portfolio-single.html">
-                  <div class="overlay overlay-color"></div><img class="portfolio-img  img-fluid "
-                    src="{{ asset('front/images/work/painting.png') }}"  alt="portfolio item photo">
-                </a>
-                <div class="item-info "><span class="tag-line">Paintings</span>
-                  <h3 class="item-title">Zari or beads/moti work on Velvet  </h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-12  col-sm-6  col-lg-4  portfolio-item clothing ">
-              <div class="item"><a class="portfolio-img-link " href="portfolio-single.html">
-                  <div class="overlay overlay-color"></div><img class="portfolio-img  img-fluid "
-                    src="{{ asset('front/images/work/ring.png') }}"  alt="portfolio item photo">
-                </a>
-                <div class="item-info "><span class="tag-line">Ring</span>
-                  <h3 class="item-title">Rings with Bead work</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Start .see-more-area-->
-      <!-- <div class=" see-more-area   wow fadeInUp" data-wow-delay="0s"> <a class=" btn-solid "
-          href="portfolio-blocks.html">see our portfolio</a></div> -->
-      <!--End .see-more-area-->
-    </div>
-  </section>
-  <!-- End  portfolio-slider Section-->
 
-  <!-- Start  blog Section-->
-  <section class="blog blog-home mega-section  " id="blog">
-    <div class="container ">
-      <div class="section-heading center-heading">
-        <h2 class="section-title  wow fadeInUp" data-wow-delay=".2s">latest <span class='hollow-text'>Activities</span><span
-            class="title-design-element "></span></h2>
-        <div class="line line-on-center wow fadeIn" data-wow-delay=".7s"></div>
-      </div>
-      <div class="row ">
-        <div class="col-12 ">
-          <div class="posts-grid ">
-            <div class="row">
-              <div class="col-12 col-lg-4 ">
-                <div class="post-box"> <a class="post-link" href="activities.php">
-                    <div class="post-img-wrapper">
-                      <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                        src="{{ asset('front/images/events/IMG_1-min.JPG') }}"  alt="" />
-                    </div>
-                  </a>
-                  <div class="post-summary">
-                  
-                   
-                    <div class="post-text"><a class="post-link" href="activities.php">
-                        <h2 class="post-title"> as a rule love what you do to do what you love</h2>
-                      </a>
-              
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4 ">
-                <div class="post-box"> <a class="post-link" href="activities.php">
-                    <div class="post-img-wrapper">
-                      <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                        src="{{ asset('front/images/events/IMG_8-min.JPG') }}"  alt="" />
-                    </div>
-                  </a>
-                  <div class="post-summary">
-                    <div class="post-text"><a class="post-link" href="activities.php">
-                        <h2 class="post-title"> stories of our great fathers lights our pathes</h2>
-                      </a>
-              
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4 ">
-                <div class="post-box"> <a class="post-link" href="activities.php">
-                    <div class="post-img-wrapper">
-                      <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                        src="{{ asset('front/images/events/IMG_17-min.JPG') }}"  alt="" />
-                    </div>
-                  </a>
-                  <div class="post-summary">
-                    <div class="post-text"><a class="post-link" href="activities.php">
-                        <h2 class="post-title"> our goal is making your fancy thoughts exist</h2>
-                      </a>
-              
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4 ">
-                <div class="post-box"> <a class="post-link" href="activities.php">
-                    <div class="post-img-wrapper">
-                      <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                        src="{{ asset('front/images/events/IMG_28-min.JPG') }}"  alt="" />
-                    </div>
-                  </a>
-                  <div class="post-summary">
-                    <div class="post-text"><a class="post-link" href="activities.php">
-                        <h2 class="post-title"> our goal is making your fancy thoughts exist</h2>
-                      </a>
-                  
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4 ">
-                <div class="post-box"> <a class="post-link" href="activities.php">
-                    <div class="post-img-wrapper">
-                      <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                        src="{{ asset('front/images/events/IMG_37-min.JPG') }}"  alt="" />
-                    </div>
-                  </a>
-                  <div class="post-summary">
-            
-                    <div class="post-text"><a class="post-link" href="activities.php">
-                        <h2 class="post-title"> stories of our great fathers lights our pathes</h2>
-                      </a>
-                    
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4">
-                <div class="post-box"> <a class="post-link" href="activities.php">
-                    <div class="post-img-wrapper">
-                      <div class="overlay-color"></div><i class="fas fa-arrow-right icon "> </i><img class="post-img"
-                        src="{{ asset('front/images/events/IMG_50-min.JPG') }}"  alt="" />
-                    </div>
-                  </a>
-                  <div class="post-summary">
-                    <div class="post-text"><a class="post-link" href="activities.php">
-                        <h2 class="post-title"> stories of our great fathers lights our pathes</h2>
-                      </a>
-                    
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End  blog Section-->
-  <!-- Start  take-action Section-->
-  <section class="take-action mega-section " id="take-action">
-    <div class="overlay-photo-image-bg parallax "></div>
-    <div class="overlay-color "></div>
-    <div class="cta-wrapper">
-      <div class="container">
-        <div class="section-heading center-heading">
-          <h2 class="section-title  wow fadeInUp" data-wow-delay=".2s">Still Have More <span
-              class='hollow-text'>Questions</span>?<span class="title-design-element "></span></h2>
-          <!--<p class="section-subtitle wow fadeInUp" data-wow-delay=".6s">Lorem ipsum dolor sit amet consectetur-->
-          <!--  adipisicing elit. Sunt, architecto cupiditate odio rerum est</p>-->
-          <div class="line line-on-center wow fadeIn" data-wow-delay=".7s"></div>
-        </div>
-        <!--Start .see-more-area-->
-        <div class=" see-more-area wow fadeInUp" data-wow-delay="0.8s"><a class="btn-solid cta-link"
-            href="contact-us.php">get in touch</a></div>
-        <!--End Of .see-more-area        -->
-      </div>
-    </div>
-  </section>
-  <!-- End  take-action Section-->
+</main>
 @endsection
 
 @section('front-footer')
+<script>
+  // JavaScript for Image Slider
+  document.addEventListener('DOMContentLoaded', () => {
+    const sliderWrapper = document.getElementById('slider-wrapper');
+    const prevSlideBtn = document.getElementById('prev-slide');
+    const nextSlideBtn = document.getElementById('next-slide');
+    const sliderItems = document.querySelectorAll('.slider-item');
+    let currentIndex = 0;
 
+    const updateSlider = () => {
+      const offset = -currentIndex * 100; // Move by 100% of item width
+      sliderWrapper.style.transform = `translateX(${offset}%)`;
+    };
+
+    prevSlideBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : sliderItems.length - 1;
+      updateSlider();
+    });
+
+    nextSlideBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;
+      updateSlider();
+    });
+
+    // Auto-slide functionality
+    let autoSlideInterval = setInterval(() => {
+      currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;
+      updateSlider();
+    }, 6000); // Change slide every 6 seconds
+
+    // Pause auto-slide on hover
+    sliderWrapper.parentElement.addEventListener('mouseenter', () => {
+      clearInterval(autoSlideInterval);
+    });
+    sliderWrapper.parentElement.addEventListener('mouseleave', () => {
+      autoSlideInterval = setInterval(() => {
+        currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;
+        updateSlider();
+      }, 6000);
+    });
+  });
+</script>
 @endsection

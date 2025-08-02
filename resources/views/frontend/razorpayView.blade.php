@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
-      <title>Rajbala SHG</title>
+      <title>Maadhatri Terracotta Craft Producer</title>
       
       <!-- jQuery -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
@@ -93,7 +93,7 @@
                                  data-amount="{{ $product->price * 100 }}" 
                                  data-currency="INR"
                                  data-buttontext="Proceed to Pay ₹{{ $product->price }}"
-                                 data-name="Rajbala SHG"
+                                 data-name="Maadhatri Terracotta Craft Producer"
                                  data-description="Paying for {{ $product->name }}, Product Id: {{ $product->id }}"
                                  data-image="https://cybercollege.info/wp-content/uploads/2021/06/cropped-logo.png"
                                  data-prefill.name="name"
