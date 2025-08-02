@@ -146,7 +146,10 @@
                 @forelse($products as $product)
                 <!-- Example Product 1 (Vases) -->
                 <div class="bg-stone-50 rounded-xl shadow-lg overflow-hidden product-card" data-category="vases">
-                    <img src="{{ asset('assets/images/products/'. $product->image) }}" alt="Terracotta Vase" loading="lazy" class="w-full h-56 object-cover">
+                    <img src="{{ route('optimized.image', ['imageName' => $product->image]) }}"
+                        alt="{{ $product->name }}"
+                        class="w-full h-56 object-cover"
+                        loading="lazy">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold text-stone-800 mb-2">{{ $product->name }}</h3>
                         <!-- <p class="text-gray-600 text-base">A classic terracotta vase, perfect for flowers or as a standalone art piece.</p> -->

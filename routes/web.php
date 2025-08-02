@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\RazorpayController;
@@ -68,6 +69,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/cancellation-refund', [HomeController::class, 'cancellationRefund'])->name('page.cancellationRefund');
     Route::get('/shipping-delivery', [HomeController::class, 'shippingDelivery'])->name('page.shippingDelivery');
 
+    Route::get('/optimized-image/{imageName}', [ImageController::class, 'showOptimizedProductImage'])->name('optimized.image');
 
     //Page Not Found
     // Route::fallback([PageController::class, 'pageNotFound'])->name('pageNotFound');
