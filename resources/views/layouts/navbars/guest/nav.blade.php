@@ -1,7 +1,7 @@
 <header class="bg-stone-800 text-white px-5 shadow-xl my_header">
   <nav class="container mx-auto py-4 flex flex-wrap justify-between items-center">
     <!-- Logo -->
-    <a href="index.html" class="text-4xl font-extrabold text-stone-100 tracking-wide">
+    <a href="{{ route('home') }}" class="text-4xl font-extrabold text-stone-100 tracking-wide">
       <img src="{{ asset('assets/images/logo/logo.jpg') }}" alt="Logo" width="100">
     </a>
     
